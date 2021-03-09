@@ -5,6 +5,61 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome @Model.Name</h1>
 </div>
+<form method="post" class="needs-validation" novalidate>
+    <div class="row align-items-center">
+        <div class="col-sm">
+            <label asp-for="Address.Street"></label>
+        </div>
+        <div class="col-sm">
+            <label asp-for="Address.Number"></label>
+        </div>
+        <div class="col-sm">
+            <label asp-for="Address.ZipCode"></label>
+        </div>
+        <div class="col-sm">
+            <label asp-for="Address.City"></label>
+        </div>
+
+    </div>
+    <div class="form-row align-items-center">
+        <div class="col-sm">
+            <input asp-for="Address.Street" />
+        </div>
+
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+
+        <div class="col-sm">
+            <input asp-for="Address.Number" /><br />
+        </div>
+
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+
+        <div class="col-sm">
+            <input asp-for="Address.ZipCode" /><br />
+        </div>
+
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+
+        <div class="col-sm">
+            <input asp-for="Address.City" /><br />
+        </div>
+
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+    </div>
+
+
+    <span asp-validation-for="Address.Street" class="text-danger"></span>
+    <div class="text-center">
+        <button class="btn btn-primary" type="submit">Zatwierdź</button>
+    </div>
+</form>
