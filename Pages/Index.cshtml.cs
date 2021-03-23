@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AddressBook.Models;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace AddressBook.Pages
 {
@@ -34,11 +36,13 @@ namespace AddressBook.Pages
 
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return Page();
+                HttpContext.Session.SetString("SessionAddress",
+        JsonConvert.SerializeObject(Address));
+                return RedirectToPage("./Address");
             }
-            return RedirectToPage("./Privacy");
+            return Page();
         }
     }
 }
